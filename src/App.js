@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { Home } from './components/Home';
+import { Login } from "./components/Login";
+
+import { useEffect } from 'react';
+import {BrowserRouter as Router,Route,useHistory,Redirect} from 'react-router-dom'
+import { Register } from "./components/Register";
+import { Reset } from "./components/Reset";
+import { NewPassword } from "./components/NewPassword";
+
 
 function App() {
+    const history = useHistory()
+
   return (
+  <>
+  <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route path='/' component={Login} exact={true}/>
+      <Route path='/register' component={Register}/>
+      <Route path='/reset' exact={true} component={Reset}/>
+      <Route path='/reset/:token' component={NewPassword}/>
+      <Route path='/home' component={Home}/>
+      {
+        localStorage.getItem('userInfo') ? <Redirect to='/home'/> :   <Redirect to='/'/> 
+      }
+
     </div>
+  </Router>
+  </>
   );
 }
 
 export default App;
+
+
