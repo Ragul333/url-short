@@ -1,3 +1,11 @@
+# Deployed URL
+        https://url-shorteners.netlify.app/home
+
+## Test Login
+        Email: ragul@gmail.com
+        Pass : 123456
+        
+        
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
